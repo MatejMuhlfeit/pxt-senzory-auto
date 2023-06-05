@@ -5,8 +5,10 @@ pins.setPull(DigitalPin.P13, PinPullMode.PullNone)
 
 
 function control12(left: number = 0, right: number = 0) {
-    PCAmotor.MotorRun(PCAmotor.Motors.M4, right)
-    PCAmotor.MotorRun(PCAmotor.Motors.M1, left)
+    let lw = Math.map(left, -200, 200, -100, 100)
+    let rw = Math.map(right, -152, 152, -100, 100)
+    PCAmotor.MotorRun(PCAmotor.Motors.M4, rw)
+    PCAmotor.MotorRun(PCAmotor.Motors.M1, lw)
 }
 
     let center: DigitalPin = DigitalPin.P15
