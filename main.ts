@@ -5,8 +5,8 @@ pins.setPull(DigitalPin.P13, PinPullMode.PullNone)
 
 
 function control12(left: number = 0, right: number = 0) {
-    let lw = Math.map(left, -200, 200, -100, 100)
-    let rw = Math.map(right, -152, 152, -100, 100)
+    let lw = (Math.map(left, -100, 100, -200, 200)) * -1
+    let rw = (Math.map(right, -100, 100, -152, 152)) * -1
     PCAmotor.MotorRun(PCAmotor.Motors.M4, rw)
     PCAmotor.MotorRun(PCAmotor.Motors.M1, lw)
 }
@@ -35,13 +35,13 @@ if (autoModeEnabled){
     // right1 = pins.digitalReadPin(right)
 
    if(c) {
-       control12(-200, -152)
+       control12(100, 100)
    } else if (l) {
-       control12(-176, -152)
+       control12(80, 100)
    } else if (r) {
-       control12(-200, -136)
+       control12(100, 80)
    } else {
-       control12(-152, -104)
+       control12(60, 60)
    }
    
    }
