@@ -2,6 +2,9 @@ pins.setPull(DigitalPin.P15, PinPullMode.PullNone)
 pins.setPull(DigitalPin.P14, PinPullMode.PullNone)
 pins.setPull(DigitalPin.P13, PinPullMode.PullNone)
 
+let leftArray = []
+let centerArray = []
+let rightArray = []
 
 
 function control12(left: number = 0, right: number = 0) {
@@ -45,6 +48,8 @@ if (autoModeEnabled){
    }
    
    }
+
+   
 })
 
 
