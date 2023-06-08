@@ -8,8 +8,8 @@ let rightArray = []
 
 
 function control12(left: number = 0, right: number = 0) {
-    let lw = (Math.map(left, -100, 100, -200, 200)) * -1
-    let rw = (Math.map(right, -100, 100, -140, 140)) * -1
+    let lw = (Math.map(left, -100, 100, -150, 150)) * -1
+    let rw = (Math.map(right, -100, 100, -100, 100)) * -1
     PCAmotor.MotorRun(PCAmotor.Motors.M4, rw)
     PCAmotor.MotorRun(PCAmotor.Motors.M1, lw)
 }
@@ -34,13 +34,13 @@ if (autoModeEnabled){
     let r = pins.digitalReadPin(right)
 
    if(c) {
-       control12(80, 80)
+       control12(60, 60 )
    } else if (l) {
-       control12(40, 80)
+       control12(-40, 60)
    } else if (r) {
-       control12(80,40)
+       control12(60,-40)
    } else {
-       control12(40, 40)
+       control12(60, 60)
    }
    
    }
