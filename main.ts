@@ -8,8 +8,8 @@ let rightArray = []
 
 
 function control12(left: number = 0, right: number = 0) {
-    let lw = (Math.map(left, -100, 100, -150, 150)) * -1
-    let rw = (Math.map(right, -100, 100, -100, 100)) * -1
+    let lw = (Math.map(left, -100, 100, -200, 200)) * -1
+    let rw = (Math.map(right, -100, 100, -160, 160)) * -1
     PCAmotor.MotorRun(PCAmotor.Motors.M4, rw)
     PCAmotor.MotorRun(PCAmotor.Motors.M1, lw)
 }
@@ -36,7 +36,7 @@ if (autoModeEnabled){
    if(c) {
        control12(60, 60 )
    } else if (l) {
-       control12(-40, 60)
+       control12(0, 80)
    } else if (r) {
        control12(60,-40)
    } else {
