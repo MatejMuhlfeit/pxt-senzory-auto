@@ -9,7 +9,7 @@ let rightArray = []
 
 function control12(left: number = 0, right: number = 0) {
     let lw = (Math.map(left, -100, 100, -200, 200)) * -1
-    let rw = (Math.map(right, -100, 100, -152, 152)) * -1
+    let rw = (Math.map(right, -100, 100, -140, 140)) * -1
     PCAmotor.MotorRun(PCAmotor.Motors.M4, rw)
     PCAmotor.MotorRun(PCAmotor.Motors.M1, lw)
 }
@@ -19,7 +19,7 @@ function control12(left: number = 0, right: number = 0) {
     let right: DigitalPin = DigitalPin.P13
 
     let autoModeEnabled = true
-    let whiteLine = 0
+    
 
    
 
@@ -27,30 +27,31 @@ function control12(left: number = 0, right: number = 0) {
 basic.forever(function () {
     basic.pause(30)
 if (autoModeEnabled){
-    let c = (whiteLine ^ pins.digitalReadPin(center)) == 0 ? false : true
-    let l = (whiteLine ^ pins.digitalReadPin(left)) == 0 ? false : true
-    let r = (whiteLine ^ pins.digitalReadPin(right)) == 0 ? false : true
+    
 
-
-
-    // center1 = pins.digitalReadPin(center)
-    // left1 = pins.digitalReadPin(left)
-    // right1 = pins.digitalReadPin(right)
+    let c = pins.digitalReadPin(center)
+    let l = pins.digitalReadPin(left)
+    let r = pins.digitalReadPin(right)
 
    if(c) {
-       control12(100, 100)
+       control12(80, 80)
    } else if (l) {
-       control12(80, 100)
+       control12(40, 80)
    } else if (r) {
-       control12(100, 80)
+       control12(80,40)
    } else {
-       control12(60, 60)
+       control12(40, 40)
    }
    
    }
 
    
 })
+// input.onButtonPressed(Button.A, function() {
+// PCAmotor.MotorRun(PCAmotor.Motors.M4, 250)
+// PCAmotor.MotorRun(PCAmotor.Motors.M1, 190)
+
+// })
 
 
 
