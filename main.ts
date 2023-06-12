@@ -13,47 +13,53 @@ function control12(left: number = 0, right: number = 0) {
     PCAmotor.MotorRun(PCAmotor.Motors.M4, rw)
     PCAmotor.MotorRun(PCAmotor.Motors.M1, lw)
 }
+function turning(num: number = 0) {
+    let rightTurn = 0
+    let leftTurn = 0
 
-    let center: DigitalPin = DigitalPin.P15
-    let left: DigitalPin = DigitalPin.P14
-    let right: DigitalPin = DigitalPin.P13
+    if (num === 1) {
+        rightTurn = 1
+    } else {
+        leftTurn = 1
+    }
 
-    let autoModeEnabled = true
-    
+}
+let center: DigitalPin = DigitalPin.P15
+let left: DigitalPin = DigitalPin.P14
+let right: DigitalPin = DigitalPin.P13
 
-   
+let autoModeEnabled = true
+
+
+
 
 
 basic.forever(function () {
-    basic.pause(30)
-if (autoModeEnabled){
-    
+    if (autoModeEnabled) {
+        radio.onReceivedNumber(function (receivedNumber: number) {
 
-    let c = pins.digitalReadPin(center)
-    let l = pins.digitalReadPin(left)
-    let r = pins.digitalReadPin(right)
+        })
 
-   if(c) {
-       control12(60, 60 )
-   } else if (l) {
-       control12(0, 80)
-   } else if (r) {
-       control12(60,-40)
-   } else {
-       control12(60, 60)
-   }
-   
-   }
+        let c = pins.digitalReadPin(center)
+        let l = pins.digitalReadPin(left)
+        let r = pins.digitalReadPin(right)
 
-   
+        if (c) {
+            control12(100, 100)
+        } else if (l) {
+            control12(-40, 100)
+        } else if (r) {
+            control12(100 -40) 
+        } else {
+            control12(80, 80)
+        }
+
+    }
+
+
 })
 // input.onButtonPressed(Button.A, function() {
 // PCAmotor.MotorRun(PCAmotor.Motors.M4, 250)
 // PCAmotor.MotorRun(PCAmotor.Motors.M1, 190)
 
 // })
-
-
-
-
-
