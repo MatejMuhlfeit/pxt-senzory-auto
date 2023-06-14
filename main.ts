@@ -26,27 +26,16 @@ function control12(left: number = 0, right: number = 0) {
     PCAmotor.MotorRun(PCAmotor.Motors.M4, rw)
     PCAmotor.MotorRun(PCAmotor.Motors.M1, lw)
 }
-function turning(num: number = 0) {
-if(num === 1){
-    control12(-40, 100)
-    turn = 0
-} else if (num === 2 ) {
-    control12(100 -40)
-    turn = 0
-} else {
-    control12(100, 100)
-    turn = 0
-}
 
 
-}
+
 
 
 let autoModeEnabled = true
 let turn = 0
 
  radio.onReceivedNumber(function (receivedNumber: number) {
-
+        turn = receivedNumber
     })
 
 
@@ -66,9 +55,13 @@ basic.forever(function () {
             control12(100, -40) 
         } else if (l === path && r === path){
             if(turn === 1){
+                basic.pause(500)
                 control12(100, -40)
+                turn = 0
             } else if (turn === 2){
+                basic.pause(500)
                 control12(-40, 100)
+                turn = 0
             } else {
                 control12(60, 60)
             }
